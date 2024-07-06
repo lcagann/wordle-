@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .hata{
+            text-align: center;
+            color: rgb(23, 114, 193);
+            margin-top: 30px;
+            height: 30px;
+            line-height: 30px;
+            margin: 30px;
+        }
+        .container{
+            width: 300px;
+            height: 300px;
+            background-color: rgb(127, 70, 5);
+            margin: 90px auto 0 auto;
+        }
+        .line{
+           display: block;
+           padding: 22px;
+        }
+        .word{
+            width: 40px;
+            height: 40px;
+            background-color: rgb(29, 78, 13);
+            float: left;  
+            margin: 4px; 
+            border-radius: 3px;
+            font-size: 34px;
+            line-height: 40px;
+            text-transform: uppercase;
+            border: 1px solid rgb(201, 201, 201);      
+            text-align: center;      
+        }
+        .keyboard{
+            width: 680px;
+            height: 200px;
+            margin: 75px auto;
+           
+        }
+        .keyline{
+            display: inline-block;
+        }
+        .key{
+            width: 30px;
+            height: 30px;
+            font-size: 27px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            background-color: rgb(207, 207, 207);
+            padding: 10px;
+            margin: 2px;
+            border-radius: 7px;
+            text-transform: uppercase;
+        }
+        .key:hover{
+            background-color: rgb(186, 183, 183);
+        }
+        .del{
+            width: 50px;
+        }
+        .enter{
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hata"></div>
+    <div class="container">
+        <div class="line">
+            <div class="word" id="1"></div>
+            <div class="word" id="2"></div>
+            <div class="word" id="3"></div>
+            <div class="word" id="4"></div>
+            <div class="word" id="5"></div>
+        </div>
+        <div class="line">
+            <div class="word" id="6"></div>
+            <div class="word" id="7"></div>
+            <div class="word" id="8"></div>
+            <div class="word 9"></div>
+            <div class="word 10"></div>
+        </div>
+        <div class="line">
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+        </div>
+        <div class="line">
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+        </div>
+        <div class="line">
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+            <div class="word"></div>
+        </div>
+    </div>
+    <div class="keyboard">
+        <div class="keyline">
+            <div class="key">q</div>
+            <div class="key">w</div>
+            <div class="key">e</div>
+            <div class="key">r</div>
+            <div class="key">t</div>
+            <div class="key">y</div>
+            <div class="key">u</div>
+            <div class="key">I</div>
+            <div class="key">o</div>
+            <div class="key">p</div>
+            <div class="key">ğ</div>
+            <div class="key">ü</div>
+        </div>
+        <div class="keyline" style="margin: 0 0 0 30px;">
+            <div class="key">a</div>
+            <div class="key">s</div>
+            <div class="key">d</div>
+            <div class="key">f</div>
+            <div class="key">g</div>
+            <div class="key">h</div>
+            <div class="key">j</div>
+            <div class="key">k</div>
+            <div class="key">l</div>
+            <div class="key">ş</div>
+            <div class="key">İ</div>
+        </div>
+        <div class="keyline" style="margin: 0 0 0 0px;">
+            <div class="key del">del</div>
+            <div class="key">z</div>
+            <div class="key">x</div>
+            <div class="key">c</div>
+            <div class="key">v</div>
+            <div class="key">b</div>
+            <div class="key">n</div>
+            <div class="key">m</div>
+            <div class="key">ö</div>
+            <div class="key">ç</div>
+            <div class="key enter" id="enter">enter</div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
+<script>
+    let column=0;
+    document.querySelectorAll(".key").forEach(function(item){
+        document.getElementById("enter").addEventListener("click",function(){
+            if(column=5){
+                console.log(2)
+            }
+        })
+        item.addEventListener("click",function(){
+            if(column<5)
+            {
+                document.querySelector(".line").children[column].innerText=item.innerText;
+             column++;
+            }else{
+                document.querySelector(".hata").innerText="Satır doldu.";
+                setTimeout(function(){
+                    document.querySelector(".hata").innerText="";
+            },2000);
+            }
+        });
+
+    });
+</script>
