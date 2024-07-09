@@ -76,35 +76,35 @@
 <body>
     <div class="hata"></div>
     <div class="container">
-        <div class="line">
+        <div class="line" id="0">
             <div class="word" id="1"></div>
             <div class="word" id="2"></div>
             <div class="word" id="3"></div>
             <div class="word" id="4"></div>
             <div class="word" id="5"></div>
         </div>
-        <div class="line">
+        <div class="line" id="34">
             <div class="word" id="6"></div>
             <div class="word" id="7"></div>
             <div class="word" id="8"></div>
             <div class="word 9"></div>
             <div class="word 10"></div>
         </div>
-        <div class="line">
+        <div class="line" id="68">
             <div class="word"></div>
             <div class="word"></div>
             <div class="word"></div>
             <div class="word"></div>
             <div class="word"></div>
         </div>
-        <div class="line">
+        <div class="line" id="102">
             <div class="word"></div>
             <div class="word"></div>
             <div class="word"></div>
             <div class="word"></div>
             <div class="word"></div>
         </div>
-        <div class="line">
+        <div class="line" id="136">
             <div class="word"></div>
             <div class="word"></div>
             <div class="word"></div>
@@ -160,24 +160,46 @@
 </html>
 <script>
     let column=0;
+    let sutun=0
+    let enter=0
     document.querySelectorAll(".key").forEach(function(item){
         document.getElementById("enter").addEventListener("click",function(){
-            if(column=5){
-                console.log(2)
+            enter=1
+            if(column==5){
+                sutun++
+                console.log(sutun)
+                
+                
+            }else{
+                document.querySelector(".hata").innerText="Önce satırı tamamlayın"
+                setTimeout(function(){
+                    document.querySelector(".hata").innerText="";
+
+                },2000);
             }
         })
         item.addEventListener("click",function(){
-            if(column<5)
+           if(column==5 && enter==1){
+            column=0
+           }
+
+            if(column<5 && enter==0)
             {
-                document.querySelector(".line").children[column].innerText=item.innerText;
+                document.getElementById(sutun).children[column].innerText=item.innerText;
+                console.log(column)
+                
+                
              column++;
-            }else{
+            }else if(enter==0){
                 document.querySelector(".hata").innerText="Satır doldu.";
                 setTimeout(function(){
                     document.querySelector(".hata").innerText="";
+                    console.log(hata)
             },2000);
             }
+            enter=0
+            
         });
-
+        
     });
 </script>
